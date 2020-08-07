@@ -12,6 +12,8 @@ export class TestComponent implements OnInit {
   @Input() age: number;
   @Output() clickAge = new EventEmitter();
 
+  user: String = 'Maria';
+
   constructor() { }
 
   ngOnInit(): void {
