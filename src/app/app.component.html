@@ -4,12 +4,13 @@
 
 <p>Weimar</p>
 
-<app-weimar></app-weimar>
+<div style="border: 1px solid red;">
+  <app-weimar age="3" (clickAge)="saveClickChild($event)"></app-weimar>
+</div>
 
-<app-test2></app-test2>
-
-
-
+<div style="border: 1px solid black;">
+  <app-component-e1 name="Weimar" age=21 description="Student" (clickSave)="clickSaveChild($event)"></app-component-e1>
+</div>
 
 
 

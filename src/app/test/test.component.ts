@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-weimar',
@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
+  
+  nameTest: string
+
+  @Input() age: number;
+  @Output() clickAge = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClickSave() {
+    this.clickAge.emit('Hiciste click');
   }
 
 }
