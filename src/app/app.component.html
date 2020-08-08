@@ -15,7 +15,9 @@
 <p>Weimar</p>
 
 <div style="border: 1px solid red;">
-  <app-weimar age="3" (clickAge)="saveClickChild($event)"></app-weimar>
+  <app-weimar [age]="age" (clickAge)="saveClickChild($event)"></app-weimar>
+
+  <button (click)="changeAge()">Change age</button>
 </div>  
 
 <div style="border: 1px solid black;">

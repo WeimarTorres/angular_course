@@ -9,12 +9,19 @@ import { from, fromEvent } from "rxjs"
 export class AppComponent implements OnInit {
   title = 'curso-angular';
 
+  age = 3;
+
   saveClickChild(event) {
     console.log('Event child: ', event)
   }
 
   clickSaveChild(event) {
     console.log('Event child: ', event)
+  }
+
+  
+  changeAge() {
+    this.age = 22;
   }
 
   ngOnInit() {

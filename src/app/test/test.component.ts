@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-weimar',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
-export class TestComponent implements OnInit {
+export class TestComponent implements OnChanges, OnInit {
   
   nameTest: string
 
@@ -16,7 +16,12 @@ export class TestComponent implements OnInit {
 
   constructor() { }
 
+  ngOnChanges(): void {
+    console.log('On changes');
+  }
+
   ngOnInit(): void {
+    console.log('On init');
   }
 
   onClickSave() {
