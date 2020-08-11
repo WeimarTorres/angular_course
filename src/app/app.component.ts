@@ -9,6 +9,38 @@ import { from, fromEvent } from "rxjs"
 export class AppComponent implements OnInit {
   title = 'curso-angular';
 
+  people = [
+    {
+      name: 'Weimar',
+      lastName: 'Torres',
+      age: 21,
+      enable: true
+    },
+    {
+      name: 'Alexander',
+      lastName: 'Herrera',
+      age: 21,
+      enable: false
+    },
+    {
+      name: 'Amira',
+      lastName: 'Troche',
+      age: 23,
+      enable: true
+    },
+    {
+      name: 'Angela',
+      lastName: 'Venegas',
+      age: 23,
+      enable: false
+    }
+  ]
+
+  ngOnInit() {
+
+  }
+
+  /*
   sw = true;
 
   aux = 3;
@@ -34,8 +66,10 @@ export class AppComponent implements OnInit {
     this.age = 22;
   }
 
+  */
+
+  /*
   ngOnInit() {
-    /*
     const array = from([1, 2, 3, 4, 5, 6]);
 
     array.subscribe(s => console.log('item: ', s));
@@ -43,8 +77,8 @@ export class AppComponent implements OnInit {
     const aux = fromEvent(document, 'mousemove');
 
     aux.subscribe((s:any) => console.log('event: ', s.clientX + ', ' + s.clientY));
-    */
   }
+  */
 
   /*
   ngOnInit() {

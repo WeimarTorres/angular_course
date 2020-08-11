@@ -1,5 +1,12 @@
 <p>Weimar</p>
 
+<div *ngFor="let person of people">
+  <div [ngStyle]="{'background': person.enable ? 'yellow' : 'red'}">
+    <person [name]="person.name" [lastName]="person.lastName" [age]="person.age" [enable]="person.enable"></person>
+  </div>
+</div>
+
+<!--
 <app-weimar *ngIf="sw" name="Weimar"></app-weimar>
 
 <button (click) ="sw = false;">Change sw</button>
@@ -33,6 +40,7 @@
 <div [class.test1]="auxClass">
   Class example
 </div>
+-->
 
 <!--
 <p>Weimar</p>
