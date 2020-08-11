@@ -4,6 +4,10 @@
 
 <button (click) ="sw = false;">Change sw</button>
 
+<div *ngFor="let person of people; let i = index">
+  <p>{{person}} -------------- {{i}}</p>
+</div>
+
 <!--
 <p>Weimar</p>
 
