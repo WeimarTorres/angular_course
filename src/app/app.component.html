@@ -14,6 +14,17 @@
   <p *ngSwitchDefault>No es 3 o 2</p>
 </div>
 
+<button (click)="auxColor='red'">Rojo</button>
+<button (click)="auxColor='yellow'">Amarillo</button>
+<button (click)="auxColor='green'">Verde</button>
+<div [ngStyle]="{'border': '1px solid ' + auxColor, 'color': auxColor}">
+  Person
+</div>
+
+<div [style.color]="auxColor">
+  Cars
+</div>
+
 <!--
 <p>Weimar</p>
 
@@ -39,9 +50,9 @@
 
 <!--
 <p>Weimar Torres</p>
+<div style="border: 1px solid black;">
 -->
 
-<div style="border: 1px solid black;">
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
