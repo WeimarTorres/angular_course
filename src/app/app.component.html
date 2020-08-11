@@ -25,6 +25,15 @@
   Cars
 </div>
 
+<button (click)="auxClass = !auxClass">Change Class</button>
+<div [ngClass]="{'test1': auxClass, 'test2': !auxClass}">
+  ng Class example
+</div>
+
+<div [class.test1]="auxClass">
+  Class example
+</div>
+
 <!--
 <p>Weimar</p>
 
