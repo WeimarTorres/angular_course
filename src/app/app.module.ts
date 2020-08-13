@@ -10,13 +10,15 @@ import { PersonModule } from './modules/person/person.module';
 import { ProductModule } from './modules/product/product.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
+import { TestPipe } from './pipes/test.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     Test2Component,
-    ComponentE1Component
+    ComponentE1Component,
+    TestPipe
   ],
   imports: [
     BrowserModule,
