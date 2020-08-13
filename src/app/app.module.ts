@@ -8,6 +8,8 @@ import { Test2Component } from './components/test2/test2.component';
 import { ComponentE1Component } from './components/component-e1/component-e1.component';
 import { PersonModule } from './modules/person/person.module';
 import { ProductModule } from './modules/product/product.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductModule } from './modules/product/product.module';
     BrowserModule,
     FormsModule,
     PersonModule,
-    ProductModule
+    ProductModule,
+    AdminModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
