@@ -7,6 +7,7 @@ import { TestComponent } from './components/test.component';
 import { Test2Component } from './components/test2/test2.component';
 import { ComponentE1Component } from './components/component-e1/component-e1.component';
 import { PersonModule } from './modules/person/person.module';
+import { ProductModule } from './modules/product/product.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PersonModule } from './modules/person/person.module';
   imports: [
     BrowserModule,
     FormsModule,
-    PersonModule
+    PersonModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
