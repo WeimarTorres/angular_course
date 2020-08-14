@@ -38,6 +38,9 @@ export class AppComponent implements OnInit {
     }
   ]
 
+  auxExponent: number = 2;
+  auxNumber: number = 3;
+
   ngOnInit() {
 
   }
