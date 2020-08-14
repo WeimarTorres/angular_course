@@ -12,6 +12,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
 import { TestPipe } from './pipes/test.pipe';
 import { ExpoPipe } from './pipes/expo.pipe';
+import { PurePipe } from './pipes/pure.pipe';
+import { ImpurePipe } from './pipes/impure.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ExpoPipe } from './pipes/expo.pipe';
     Test2Component,
     ComponentE1Component,
     TestPipe,
-    ExpoPipe
+    ExpoPipe,
+    PurePipe,
+    ImpurePipe
   ],
   imports: [
     BrowserModule,

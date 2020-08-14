@@ -1,5 +1,14 @@
 <p>PIPES</p>
 
+<p>PURE: {{numbers | pure}}</p>
+
+<p>INPURE: {{numbers | impure}}</p>
+
+<button (click)="numbers.push(4)">Add</button>
+
+<!--
+<p>PIPES</p>
+
 <p>PIPE JSON: {{people | json}}</p>
 
 <p>PIPE UPPERCASE: {{name | uppercase}}</p>
@@ -14,6 +23,7 @@ VALUE: <input type='text' [(ngModel)]='auxNumber'>
 EXPONENT: <input type='text' [(ngModel)]='auxExponent'>
 
 <p>{{auxNumber | expo: auxExponent: 'Hola'}}</p>
+-->
 
 <!--
 <p>Weimar</p>
