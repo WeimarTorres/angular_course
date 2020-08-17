@@ -43,8 +43,17 @@ export class AppComponent implements OnInit {
   auxExponent: number = 2;
   auxNumber: number = 3;
 
-  ngOnInit() {
+  pure(a:number, b:number){
+    return a + b;
+  }
 
+  impure(a:number, b:number){
+    return a + b + Math.random();
+  }
+
+  ngOnInit() {
+    console.log('PURE: ', this.pure(6, 2));
+    console.log('IMPURE: ', this.impure(6, 2));
   }
 
   /*
