@@ -3,10 +3,7 @@ import { from, fromEvent } from "rxjs"
 
 @Component({
   selector: 'app-root',
-  template: `
-  <button (click)="name = 'Maria'; lastName = 'Gutierrez'">Change name, lastName</button>
-  <app-weimar [name]="name" [lastName]="lastName"></app-weimar>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
