@@ -23,7 +23,7 @@ export class NgColorDirective {
     //console.log('ELEMENT REF: ', el)
 
     //this.changeColor('yellow');
-  }s
+  }
 
   changeColor(color:string) {
     this.el.nativeElement.style.backgroundColor = color;
