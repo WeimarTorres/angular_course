@@ -3,7 +3,10 @@ import { from, fromEvent } from "rxjs"
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+  <button (click)="name = 'Maria'; lastName = 'Gutierrez'">Change name, lastName</button>
+  <app-weimar [name]="name" [lastName]="lastName"></app-weimar>
+  `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
@@ -19,6 +22,7 @@ export class AppComponent implements OnInit {
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   name = 'weimar';
+  lastName = 'torres';
 
   people = [
     {

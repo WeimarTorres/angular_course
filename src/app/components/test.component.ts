@@ -1,31 +1,52 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-weimar',
   template: `
   <div style="border: 1px solid red;">
+    <!--
     <p>Test</p>
 
     <input type="text" [(ngModel)]="name">
+    -->
 
     <p>Valor var name: {{name}}</p>
+    <p>Valor var lastName: {{lastName}}</p>
   </div>
   `
 })
 export class TestComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  @Input() name: string;
+  //@Input()name:string;
+
+  internediaria: string;
+
+  @Input()
+  get name() {
+    return this.internediaria;
+  }
+  set name(name: string) {
+    this.internediaria = 'Interceptar inputs: ' + name;
+  }
+
+  @Input() lastName:string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log("On Init");
+    console.log("On Init", this.internediaria);
   }
 
-  ngOnChanges() {
-    console.log("On Changes");
+  ngOnChanges(changes: SimpleChange) {
+    if(changes && changes.lastName && changes.lastName.currentValue) {
+      console.log("On Changes", changes.lastName.currentValue);
+
+      const aux = 'Interceptar inputs: ' + changes.lastName.currentValue;
+      this.lastName = aux;
+    }
   }
 
+  /*
   ngDoCheck() {
     console.log("Do Check");
   }
@@ -49,6 +70,7 @@ export class TestComponent implements OnChanges, OnInit, DoCheck, AfterContentIn
   ngOnDestroy() {
     console.log("On Destroy");
   }
+  */
 
   /*
   nameTest: string
