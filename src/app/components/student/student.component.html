@@ -1,0 +1,12 @@
+<div>
+  <p>Nombre: {{name}}</p>
+  <p>Edad: {{age}}</p>
+  <p>Grado: {{grade}}</p>
+
+  <div *ngIf="(age < 19)">
+    <button>Inscribir</button>
+  </div>
+  <div *ngIf="(age >= 19)">
+    <button disabled>Inscribir</button>
+  </div>
+</div>

@@ -1,5 +1,17 @@
 <div>Primaria</div>
 <div>Total {{totalPrimary}}</div>
 
+<div *ngFor="let student of primary">
+  <div [ngStyle]="{'background': (student.edad < 19) ? 'orange' : 'red'}">
+    <app-student [name]="student.nombre" [age]="student.edad" [grade]="student.grado"></app-student>
+  </div>
+</div>
+
 <div>Secundaria</div>
 <div>Total {{totalHighSchool}}</div>
+
+<div *ngFor="let student of highSchool">
+  <div [ngStyle]="{'background': (student.edad < 19) ? 'orange' : 'red'}">
+    <app-student [name]="student.nombre" [age]="student.edad" [grade]="student.grado"></app-student>
+  </div>
+</div>
