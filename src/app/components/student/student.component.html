@@ -4,7 +4,7 @@
   <p>Grado: {{grade}}</p>
 
   <div *ngIf="(age < 19)">
-    <button>Inscribir</button>
+    <button (click)="enroll()">Inscribir</button>
   </div>
   <div *ngIf="(age >= 19)">
     <button disabled>Inscribir</button>
