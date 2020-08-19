@@ -59,5 +59,11 @@ export class AppComponent {
       edad: 25,
       grado: "S"
     }
-  ]
+  ];
+
+  primary = this.data.filter(el => el.grado === "P");
+  totalPrimary = this.primary.length;
+
+  highSchool = this.data.filter(el => el.grado === "S");
+  totalHighSchool = this.highSchool.length;
 }
