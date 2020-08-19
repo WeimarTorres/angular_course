@@ -1,5 +1,7 @@
-<div>Primaria</div>
-<div>Total {{totalPrimary}}</div>
+<div *ngIf="allInscribed" style="border: 1px solid black; background: lightBlue">Todos los habilitados estan inscritos</div>
+
+<div style="border: 1px solid black; background: lightBlue">Primaria</div>
+<div style="border: 1px solid black; background: lightBlue">Total {{totalPrimary}}</div>
 
 <div *ngFor="let student of primary">
   <div [ngStyle]="{'background': (student.edad < 19) ? 'orange' : 'red'}">
@@ -7,8 +9,8 @@
   </div>
 </div>
 
-<div>Secundaria</div>
-<div>Total {{totalHighSchool}}</div>
+<div style="border: 1px solid black; background: lightBlue">Secundaria</div>
+<div style="border: 1px solid black; background: lightBlue">Total {{totalHighSchool}}</div>
 
 <div *ngFor="let student of highSchool">
   <div [ngStyle]="{'background': (student.edad < 19) ? 'orange' : 'red'}">

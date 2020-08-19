@@ -61,6 +61,8 @@ export class AppComponent {
     }
   ];
 
+  allInscribed = this.data.filter(el => (el.edad < 19)).length === 0;
+
   primary = this.data.filter(el => el.grado === "P");
   totalPrimary = this.primary.length;
 
