@@ -5,7 +5,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
-  { path: 'weimar/home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'about', component: AboutComponent }
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRouting {}
+export class AppRoutingModule {}
