@@ -28,7 +28,9 @@
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "typescript": ">=3.9 <4.0",
-    "zone.js": "~0.10.3"
+    "zone.js": "~0.10.3",
+    "@angular/material": "^10.0.0",
+    "@angular/cdk": "^10.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.5",
