@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
-import { TestComponent } from './login/test/test.component';
-
+import { NgElseDirective } from '../directives/ng-else.directive';
 
 @NgModule({
-  declarations: [LoginComponent, TestComponent],
+  declarations: [
+    LoginComponent,
+    NgElseDirective
+  ],
   imports: [
     CommonModule,
     LoginRoutingModule
