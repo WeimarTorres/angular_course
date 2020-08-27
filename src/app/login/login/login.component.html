@@ -2,11 +2,20 @@
 
 <button routerLink="/pages">LOGIN</button>
 
-<div #test class="class1 class2" id="test2">HOLA</div>
+<!--
+<div *ngIf="1 === 1">ngIf</div>
 
-<button (click)="sw = !sw;">SW</button>
-<div *ngIf="sw else esFalso">es verdad</div>
+<ng-template [ngIf]="1 === 1">ngIf</ng-template>
 
-<ng-template #esFalso>
-  <p>ES FALSO</p>
-</ng-template> 
+<ng-container *ngFor='let item of [1, 2, 3, 4, 5, 6]'>
+    <p>ITEM1</p>
+</ng-container>
+
+<div *ngFor='let item of [1, 2, 3, 4, 5, 6]'>
+    <p>ITEM2</p>
+</div>
+-->
+
+<app-test>
+    <button>COMPRAR</button>
+</app-test>
