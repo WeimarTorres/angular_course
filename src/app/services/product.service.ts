@@ -1,40 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public getProducts(): any[] {
-    return [
-      {
-        description: 'Description',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-        ownerId: 1,
-        price: 12,
-        title: 'Salteñas'
-      },
-      {
-        description: 'Description',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-        ownerId: 1,
-        price: 12,
-        title: 'Salteñas'
-      },
-      {
-        description: 'Description',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-        ownerId: 1,
-        price: 12,
-        title: 'Salteñas'
-      },
-      {
-        description: 'Description',
-        imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-        ownerId: 1,
-        price: 12,
-        title: 'Salteñas'
-      }
-    ];
+  public getProducts(): Observable<any> {
+    return this.http.get('https://angular-course-ff5dd.firebaseio.com/products.json');
   }
 }

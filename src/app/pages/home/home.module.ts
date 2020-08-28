@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -14,7 +15,8 @@ import { MatButtonModule } from "@angular/material/button";
     CommonModule,
     HomeRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     ProductService
