@@ -29,6 +29,9 @@ export class AdminComponent implements OnInit {
     console.log('FORM GROUP: ', this.productForm.value);
     this.productService.addProduct(this.productForm.value).subscribe(res => {
       console.log(res);
+    },
+    err => {
+      console.log('Error de conexion');
     });
   }
 

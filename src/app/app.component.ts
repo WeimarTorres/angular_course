@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+  import { Component, OnInit, HostListener } from '@angular/core';
 import { from, fromEvent } from "rxjs"
 
 @Component({
