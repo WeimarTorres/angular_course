@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
 
   productForm: FormGroup;
+
+  productSubs: Subscription
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
@@ -27,12 +30,16 @@ export class AdminComponent implements OnInit {
 
   onEnviar2(): void {
     console.log('FORM GROUP: ', this.productForm.value);
-    this.productService.addProduct(this.productForm.value).subscribe(res => {
+    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(res => {
       console.log(res);
     },
     err => {
       console.log('Error de conexion');
     });
+  }
+
+  ngOnDestroy(): void {
+    this.productSubs.unsubscribe();
   }
 
   //nameControl = new FormControl();
