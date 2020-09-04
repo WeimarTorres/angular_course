@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   create() {
     this.studentsAddSub = this.studentsService.addStudent(this.studentForm.value).subscribe(res => {
-      this.loadStudents;
+      this.loadStudents();
     },
     err => {
       console.log('ERROR');
@@ -81,7 +81,6 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   edit(event) {
-    console.log(event);
     this.idEdit = event.id;
     this.studentForm.patchValue({
       name: event.name,
@@ -89,6 +88,10 @@ export class AppComponent implements OnInit, OnDestroy{
       grade: event.grade,
       urlImage: event.urlImage
     });
+  }
+
+  delete() {
+    this.loadStudents();
   }
 
   ngOnDestroy() {

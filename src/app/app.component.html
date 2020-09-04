@@ -40,7 +40,7 @@
 
   <div *ngFor="let student of primary">
     <div [ngStyle]="{'background': (student.age < 19) ? 'orange' : 'red'}">
-      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)"></app-student>
+      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)" (deleteEvent)="delete($event)"></app-student>
     </div>
   </div>
 
@@ -49,7 +49,7 @@
 
   <div *ngFor="let student of highSchool">
     <div [ngStyle]="{'background': (student.age < 19) ? 'orange' : 'red'}">
-      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)"></app-student>
+      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)" (deleteEvent)="delete($event)"></app-student>
     </div>
   </div>
   

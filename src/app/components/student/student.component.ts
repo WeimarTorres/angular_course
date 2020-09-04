@@ -10,6 +10,7 @@ import { StudentsService } from '../../services/students.service';
 export class StudentComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter();
 
   @Input() id: String;
   @Input() name: String;  
@@ -48,7 +49,7 @@ export class StudentComponent implements OnInit {
   delete() {
     this.studentsService.deleteStudent(this.id).subscribe(
       res => {
-        console.log(res);
+        this.deleteEvent.emit();
       },
       err => {
         console.log('ERROR');
