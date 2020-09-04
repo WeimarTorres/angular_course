@@ -7,10 +7,10 @@
       <input formControlName="name" type="text">
       <div *ngIf="studentForm.get('name').invalid && (studentForm.get('name').touched || studentForm.get('name').dirty)" class="alert alert-danger">
         <div *ngIf="studentForm.get('name').errors.required">
-          Name is required
+          El nombre es requerido
         </div>
         <div *ngIf="studentForm.get('name').errors.minlength">
-          Name must have 3 characteres
+          El nombre tiene que tener por lo menos 3 caracteres
         </div>
       </div>
       <p>Edad</p>
@@ -19,7 +19,7 @@
       <input formControlName="grade" type="text">
       <div *ngIf="studentForm.get('grade').invalid && (studentForm.get('grade').touched || studentForm.get('grade').dirty)" class="alert alert-danger">
         <div *ngIf="studentForm.get('grade').errors.required">
-          Name is required
+          El grado es requerido
         </div>
       </div>
       <p>Image Url</p>

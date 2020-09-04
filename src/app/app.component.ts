@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy{
+export class AppComponent implements OnInit, OnDestroy{
   title = 'curso-angular';
 
   studentForm: FormGroup;
@@ -27,8 +27,6 @@ export class AppComponent implements OnDestroy{
   totalHighSchool: number;
 
   constructor(private formBuilder: FormBuilder, private studentsService: StudentsService) {
-    this.loadStudents();
-
     this.studentForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       age: '',
@@ -37,8 +35,14 @@ export class AppComponent implements OnDestroy{
     });
   }
 
+  ngOnInit() {
+    this.loadStudents();
+  }
+
   loadStudents() {
     this.data = [];
+    this.primary = [];
+    this.highSchool = [];
     this.studentsGetSub = this.studentsService.getStudents().subscribe(
       res => {
         Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
@@ -48,6 +52,7 @@ export class AppComponent implements OnDestroy{
 
         this.highSchool = this.data.filter(el => el.grade === "S");
         this.totalHighSchool = this.highSchool.length;
+        console.log('test')
       },
       err => {
         console.log('ERROR');
@@ -67,7 +72,6 @@ export class AppComponent implements OnDestroy{
   editDB() {
     this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.studentForm.value).subscribe(
       res => {
-        console.log(res);
         this.loadStudents();
       },
       err => {

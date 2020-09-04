@@ -48,7 +48,7 @@ export class StudentComponent implements OnInit {
   delete() {
     this.studentsService.deleteStudent(this.id).subscribe(
       res => {
-        console.log('RESPONSE: ', res);
+        console.log(res);
       },
       err => {
         console.log('ERROR');
