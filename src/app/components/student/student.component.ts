@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-student',
@@ -7,9 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
+  @Output() enrollEvent = new EventEmitter();
+
+  @Input() name: String;  
+  @Input() age: number;
+
+  auxGrade: String;
+  @Input()
+      get grade() {
+        return this.auxGrade;
+      }
+      set grade(grade: String) {
+        this.auxGrade = (grade === "P") ? "Primaria" : ((grade === "S") ? "Secundaria" : "Error");
+      }
+
+  colorBackground = (this.age < 19) ? "white" : "red";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  enroll() {
+    this.enrollEvent.emit({
+      nombre: this.name,
+      edad: this.age
+    });
   }
 
 }
