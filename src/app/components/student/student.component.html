@@ -4,10 +4,6 @@
   <p>Grado: {{grade}}</p>
   <img [src]="imageUrl" width="100" height="100">
 
-  <div *ngIf="(age < 19)">
-    <button (click)="enroll()">Inscribir</button>
-  </div>
-  <div *ngIf="(age >= 19)">
-    <button disabled>Inscribir</button>
-  </div>
+  <button mat-raised-button (click)="edit()">Edit</button>
+  <button mat-raised-button (click)="delete()">Delete</button>
 </div>

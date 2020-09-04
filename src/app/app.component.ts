@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StudentsService } from './services/students.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnDestroy{
   title = 'curso-angular';
 
-  studentsSub: Subscription;
+  studentForm: FormGroup;
+
+  studentsGetSub: Subscription;
 
   data = [];
 
@@ -21,8 +24,16 @@ export class AppComponent implements OnInit{
   highSchool: { nombre: string; edad: number; grado: string; }[];
   totalHighSchool: number;
 
-  constructor(private studentsService: StudentsService) {
+  constructor(private formBuilder: FormBuilder, private studentsService: StudentsService) {
     this.loadStudents();
+
+    this.studentForm = this.formBuilder.group({
+      description: ['', [Validators.required, Validators.minLength(3)]],
+      imageUrl: '',
+      ownerId: '',
+      price: '',
+      title: ''
+    });
   }
 
   enroll(event) {
@@ -41,10 +52,8 @@ export class AppComponent implements OnInit{
     this.totalInscribed++;
   }
 
-  ngOnInit() {  }
-
   loadStudents() {
-    this.studentsSub = this.studentsService.getStudents().subscribe(
+    this.studentsGetSub = this.studentsService.getStudents().subscribe(
       res => {
         console.log(Object.entries(res));
         
@@ -61,5 +70,9 @@ export class AppComponent implements OnInit{
         console.log('ERROR');
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.studentsGetSub ? this.studentsGetSub.unsubscribe() : '';
   }
 }
