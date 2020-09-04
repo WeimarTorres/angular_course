@@ -10,7 +10,7 @@ import { StudentsService } from './services/students.service';
 export class AppComponent implements OnInit{
   title = 'curso-angular';
 
-  studentsSub = Subscription;
+  studentsSub: Subscription;
 
   data = [];
 
@@ -21,7 +21,9 @@ export class AppComponent implements OnInit{
   highSchool: { nombre: string; edad: number; grado: string; }[];
   totalHighSchool: number;
 
-  constructor(private studentsService: StudentsService) { }
+  constructor(private studentsService: StudentsService) {
+    this.loadStudents();
+  }
 
   enroll(event) {
     const index = this.data.findIndex(el => el.nombre === event.nombre && el.edad === event.edad);
@@ -39,22 +41,25 @@ export class AppComponent implements OnInit{
     this.totalInscribed++;
   }
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  loadStudents() {
     this.studentsSub = this.studentsService.getStudents().subscribe(
       res => {
-        Object.entries(res).map(p => this.data.push(p[1]));
+        console.log(Object.entries(res));
+        
+        Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
+        this.allInscribed = this.data.filter(el => (el.age < 19)).length === 0;
+
+        this.primary = this.data.filter(el => el.grade === "P");
+        this.totalPrimary = this.primary.length;
+
+        this.highSchool = this.data.filter(el => el.grade === "S");
+        this.totalHighSchool = this.highSchool.length;
       },
       err => {
         console.log('ERROR');
       }
     );
-
-    this.allInscribed = this.data.filter(el => (el.edad < 19)).length === 0;
-
-    this.primary = this.data.filter(el => el.grado === "P");
-    this.totalPrimary = this.primary.length;
-
-    this.highSchool = this.data.filter(el => el.grado === "S");
-    this.totalHighSchool = this.highSchool.length;
   }
 }

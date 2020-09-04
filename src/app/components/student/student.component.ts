@@ -11,6 +11,7 @@ export class StudentComponent implements OnInit {
 
   @Input() name: String;  
   @Input() age: number;
+  @Input() imageUrl: String;
 
   auxGrade: String;
   @Input()
