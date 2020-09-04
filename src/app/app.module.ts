@@ -25,7 +25,6 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatFormFieldModule,
     MatInputModule
   ],
   providers: [StudentsService],
