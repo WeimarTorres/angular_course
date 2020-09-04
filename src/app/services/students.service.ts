@@ -16,7 +16,11 @@ export class StudentsService {
   }
 
   public updateStudent(id: any, student: any): Observable<any> {
-    return this.http.put(`https://angular-course-ff5dd.firebaseio.com/products/${id}.json`, student);
+    return this.http.put(`https://studentss-test.firebaseio.com/students/${id}.json`, student);
+  }
+
+  public deleteStudent(id: any): Observable<any> {
+    return this.http.delete(`https://studentss-test.firebaseio.com/students/${id}.json`);
   }
 
 }

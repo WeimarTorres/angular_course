@@ -17,6 +17,8 @@ export class AppComponent implements OnDestroy{
   studentsAddSub: Subscription;
   studentsEditSub: Subscription;
 
+  idEdit: String;
+
   data = [];
 
   primary: { nombre: string; edad: number; grado: string; }[];
@@ -31,16 +33,15 @@ export class AppComponent implements OnDestroy{
       name: ['', [Validators.required, Validators.minLength(3)]],
       age: '',
       grade: ['', [Validators.required]],
-      imageUrl: ''
+      urlImage: ''
     });
   }
 
   loadStudents() {
+    this.data = [];
     this.studentsGetSub = this.studentsService.getStudents().subscribe(
       res => {
         Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
-
-        console.log(this.data);
         
         this.primary = this.data.filter(el => el.grade === "P");
         this.totalPrimary = this.primary.length;
@@ -56,37 +57,39 @@ export class AppComponent implements OnDestroy{
 
   create() {
     this.studentsAddSub = this.studentsService.addStudent(this.studentForm.value).subscribe(res => {
-      console.log(res);
+      this.loadStudents;
     },
     err => {
       console.log('ERROR');
     });
-    this.loadStudents;
   }
 
   editDB() {
-    /*this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.productForm.value).subscribe(
+    this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.studentForm.value).subscribe(
       res => {
-        console.log('RESP UPDATE: ', res);
-        this.loadProduct();
+        console.log(res);
+        this.loadStudents();
       },
       err => {
-        console.log('ERROR UPDATE DE SERVIDOR');
+        console.log('ERROR');
       }
-    );*/
+    );
   }
 
   edit(event) {
     console.log(event);
+    this.idEdit = event.id;
     this.studentForm.patchValue({
       name: event.name,
       age: event.age,
       grade: event.grade,
-      imageUrl: event.imageUrl
+      urlImage: event.urlImage
     });
   }
 
   ngOnDestroy() {
     this.studentsGetSub ? this.studentsGetSub.unsubscribe() : '';
+    this.studentsAddSub ? this.studentsAddSub.unsubscribe() : '';
+    this.studentsEditSub ? this.studentsEditSub.unsubscribe() : '';
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-student',
@@ -20,7 +21,7 @@ export class StudentComponent implements OnInit {
   auxGrade: String;
   @Input()
       get grade() {
-        return this.auxGrade;
+        return (this.auxGrade === "Primaria") ? "P" : ((this.auxGrade === "Secundaria") ? "S" : "Error");
       }
       set grade(grade: String) {
         this.auxGrade = (grade === "P") ? "Primaria" : ((grade === "S") ? "Secundaria" : "Error");
@@ -28,7 +29,7 @@ export class StudentComponent implements OnInit {
 
   colorBackground = (this.age < 19) ? "white" : "red";
 
-  constructor() { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
   }
@@ -37,11 +38,22 @@ export class StudentComponent implements OnInit {
     this.inputSideNav.toggle();
     this.editEvent.emit({
       id: this.id,
-      nombre: this.name,
-      edad: this.age,
+      name: this.name,
+      age: this.age,
       grade: this.grade,
-      imageUrl: this.imageUrl
+      urlImage: this.imageUrl
     });
+  }
+
+  delete() {
+    this.studentsService.deleteStudent(this.id).subscribe(
+      res => {
+        console.log('RESPONSE: ', res);
+      },
+      err => {
+        console.log('ERROR');
+      }
+    );
   }
 
 }
