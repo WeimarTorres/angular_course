@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-student',
@@ -7,11 +8,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  @Output() enrollEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
 
+  @Input() id: String;
   @Input() name: String;  
   @Input() age: number;
   @Input() imageUrl: String;
+
+  @Input() inputSideNav: MatSidenav;
 
   auxGrade: String;
   @Input()
@@ -29,10 +33,14 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
   }
 
-  enroll() {
-    this.enrollEvent.emit({
+  edit() {
+    this.inputSideNav.toggle();
+    this.editEvent.emit({
+      id: this.id,
       nombre: this.name,
-      edad: this.age
+      edad: this.age,
+      grade: this.grade,
+      imageUrl: this.imageUrl
     });
   }
 

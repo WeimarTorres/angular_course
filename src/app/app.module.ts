@@ -23,9 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     BrowserModule,
     HttpClientModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatSidenavModule
   ],
   providers: [StudentsService],
   bootstrap: [AppComponent]

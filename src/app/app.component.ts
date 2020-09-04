@@ -14,6 +14,8 @@ export class AppComponent implements OnDestroy{
   studentForm: FormGroup;
 
   studentsGetSub: Subscription;
+  studentsAddSub: Subscription;
+  studentsEditSub: Subscription;
 
   data = [];
 
@@ -36,10 +38,10 @@ export class AppComponent implements OnDestroy{
   loadStudents() {
     this.studentsGetSub = this.studentsService.getStudents().subscribe(
       res => {
-        console.log(Object.entries(res));
-        
         Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
 
+        console.log(this.data);
+        
         this.primary = this.data.filter(el => el.grade === "P");
         this.totalPrimary = this.primary.length;
 
@@ -50,6 +52,38 @@ export class AppComponent implements OnDestroy{
         console.log('ERROR');
       }
     );
+  }
+
+  create() {
+    this.studentsAddSub = this.studentsService.addStudent(this.studentForm.value).subscribe(res => {
+      console.log(res);
+    },
+    err => {
+      console.log('ERROR');
+    });
+    this.loadStudents;
+  }
+
+  editDB() {
+    /*this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.productForm.value).subscribe(
+      res => {
+        console.log('RESP UPDATE: ', res);
+        this.loadProduct();
+      },
+      err => {
+        console.log('ERROR UPDATE DE SERVIDOR');
+      }
+    );*/
+  }
+
+  edit(event) {
+    console.log(event);
+    this.studentForm.patchValue({
+      name: event.name,
+      age: event.age,
+      grade: event.grade,
+      imageUrl: event.imageUrl
+    });
   }
 
   ngOnDestroy() {
