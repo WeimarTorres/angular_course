@@ -12,7 +12,16 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public login(body: any): Observable<any> {
-    return this.http.post(`${this.url}/v1/accounts:signInWithPassword?key=${this.key}`, body);
+    return this.http.post(`${this.url}/v1/accounts:signInWithPassword?key=${this.key}`, body).pipe(
+      map(res => {
+        this.authSuccess(res.idToken);
+        return res;
+      })
+    );
+  }
+
+  public authSuccess(token: any): void {
+    localStorage.setItem('auth', token);
   }
 
 }
