@@ -22,7 +22,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatSliderModule,
     MatIconModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
