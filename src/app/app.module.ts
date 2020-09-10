@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor'
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'pages',
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -39,6 +41,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
