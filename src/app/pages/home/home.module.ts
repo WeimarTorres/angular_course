@@ -6,7 +6,6 @@ import { ProductService } from '../../shared/services/product.service';
 
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
-import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
@@ -20,10 +19,8 @@ const routes: Routes = [
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
     MatCardModule,
     MatButtonModule,
-    HttpClientModule,
     RouterModule.forChild(routes)
   ],
   providers: [

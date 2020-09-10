@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   declarations: [PagesComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ]
 })

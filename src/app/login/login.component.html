@@ -9,7 +9,7 @@
         <input matInput  type="text" name="email" ngModel required #emailUI="ngModel">
         <div *ngIf="emailUI.invalid && (emailUI.touched || emailUI.dirty)" class="alert alert-danger">
           <div *ngIf="emailUI.errors.required">
-            Name is required
+            Email is required
           </div>
         </div>
       </mat-form-field>
@@ -18,7 +18,7 @@
         <input matInput type="password" name="password" ngModel required #passwordUI="ngModel">
         <div *ngIf="passwordUI.invalid && (passwordUI.touched || passwordUI.dirty)" class="alert alert-danger">
           <div *ngIf="passwordUI.errors.required">
-            Name is required
+            Password is required
           </div>
         </div>
       </mat-form-field>

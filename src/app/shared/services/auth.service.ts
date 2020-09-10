@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment'
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,7 @@ export class AuthService {
     );
   }
 
-  public authSuccess(token: any): void {
+  private authSuccess(token: any): void {
     localStorage.setItem('auth', token);
   }
 
