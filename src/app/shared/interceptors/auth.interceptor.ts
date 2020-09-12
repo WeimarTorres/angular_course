@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment'
 import { AuthService } from '../services/auth.service';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -30,7 +32,19 @@ export class AuthInterceptor implements HttpInterceptor {
       })
     }
     
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if(err.status === 401) {
+          this.handle401Error();
+        }
+        return throwError('Error');
+      })
+    );
+  }
+
+  private handle401Error(): Observable<any> {}
+    this.authService.logout();
+    return throwError('Error 401');
   }
 
 }
