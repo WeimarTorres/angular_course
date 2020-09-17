@@ -2,11 +2,20 @@
 admin works!
 </p>
 
+<p>ELDERY</p>
 <div class="row">
-  <p>ELDERY</p>
   <div *ngFor="let person of eldery" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
 
     <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage"></app-card>
 
   </div>
-</mat-drawer-container>
+</div>
+
+<p>YOUNG</p>
+<div class="row">
+  <div *ngFor="let person of young" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
+
+    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage"></app-card>
+
+  </div>
+</div>
