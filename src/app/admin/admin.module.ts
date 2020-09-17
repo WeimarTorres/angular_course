@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
 import { FormComponent } from './components/form/form.component';
+import { PeopleService } from '../shared/services/people.service';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     HeaderComponent,
     CardComponent,
     FormComponent
-  ]
+  ],
+  providers: [PeopleService]
 })
 export class AdminModule { }
