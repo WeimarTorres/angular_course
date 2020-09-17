@@ -4,6 +4,9 @@ import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from './components/header/header.component';
+import { CardComponent } from './components/card/card.component';
+import { FormComponent } from './components/form/form.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,11 @@ const routes: Routes = [
     MatCardModule,
     MatButtonModule,
   ],
-  declarations: [AdminComponent]
+  declarations: [
+    AdminComponent,
+    HeaderComponent,
+    CardComponent,
+    FormComponent
+  ]
 })
 export class AdminModule { }
