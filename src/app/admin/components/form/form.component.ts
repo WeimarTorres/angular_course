@@ -50,30 +50,4 @@ export class FormComponent implements OnInit, OnDestroy {
     this.peopleAddSub ? this.peopleAddSub.unsubscribe() : '';
   }
 
-  /*
-<div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Crear
-    </button>
-  </div>
-
-  <div style="border: 1px solid black; background: lightBlue">Primaria</div>
-  <div style="border: 1px solid black; background: lightBlue">Total {{totalPrimary}}</div>
-
-  <div *ngFor="let student of primary">
-    <div [ngStyle]="{'background': (student.age < 19) ? 'orange' : 'red'}">
-      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)" (deleteEvent)="delete($event)"></app-student>
-    </div>
-  </div>
-
-  <div style="border: 1px solid black; background: lightBlue">Secundaria</div>
-  <div style="border: 1px solid black; background: lightBlue">Total {{totalHighSchool}}</div>
-
-  <div *ngFor="let student of highSchool">
-    <div [ngStyle]="{'background': (student.age < 19) ? 'orange' : 'red'}">
-      <app-student [inputSideNav]="drawer" [id]="student.id" [name]="student.name" [age]="student.age" [grade]="student.grade" [imageUrl]="student.urlImage" (editEvent)="edit($event)" (deleteEvent)="delete($event)"></app-student>
-    </div>
-  </div>
-  */
-
 }
