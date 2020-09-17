@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PeopleService } from '../shared/services/people.service';
 import { FormComponent } from './components/form/form.component';
@@ -13,10 +12,7 @@ export class AdminComponent implements OnInit {
 
   @ViewChild('appForm') child: FormComponent;
 
-  personForm: FormGroup;
-
   peopleGetSub: Subscription;
-  peopleAddSub: Subscription;
   //studentsEditSub: Subscription;
 
   idEdit: String;
@@ -26,14 +22,7 @@ export class AdminComponent implements OnInit {
   eldery: { name: string; age: number; enable: boolean; urlImage: string; }[];
   young: { name: string; age: number; enable: boolean; urlImage: string; }[];
 
-  constructor(private formBuilder: FormBuilder, private peopleService: PeopleService) {
-    this.personForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      age: '',
-      enable: [true, [Validators.required]],
-      urlImage: ''
-    });
-  }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
     this.loadPeople();
@@ -57,17 +46,8 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  create() {
-    this.peopleAddSub = this.peopleService.addPerson(this.personForm.value).subscribe(res => {
-      this.loadPeople();
-    },
-    err => {
-      console.log('ERROR');
-    });
-  }
-
-  openDrawer() {
-    this.child.open();
+  openDrawer(type: boolean) {
+    this.child.open(type);
   }
 
 /*
@@ -97,9 +77,12 @@ export class AdminComponent implements OnInit {
     this.loadPeople();
   }
 
+  create() {
+    this.loadPeople();
+  }
+
   ngOnDestroy() {
     this.peopleGetSub ? this.peopleGetSub.unsubscribe() : '';
-    this.peopleAddSub ? this.peopleAddSub.unsubscribe() : '';
     //this.studentsEditSub ? this.studentsEditSub.unsubscribe() : '';
   }
 

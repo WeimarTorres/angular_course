@@ -2,17 +2,11 @@
 admin works!
 </p>
 
-<mat-drawer-container autosize style="width: 100%; height: 600px;">
+<mat-drawer-container autosize style="width: 100%; height: 100%px;">
 
-  <app-form #appForm></app-form>
+  <app-form #appForm (createEvent)="create($event)"></app-form>
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="openDrawer()">
-      Toggle sidenav
-    </button>
-  </div>
-
-  <button mat-button style="background: yellow; margin: 10px" (click)="create()">ADD</button>
+  <button mat-button style="background: yellow; margin: 10px" (click)="openDrawer(true)">ADD</button>
 
   <div style="border: 1px solid black; background: lightBlue">ELDERY</div>
   <div class="row">

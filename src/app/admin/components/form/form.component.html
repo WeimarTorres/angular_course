@@ -1,17 +1,28 @@
-<mat-drawer #drawer style="width: 600px; height: 100%;" mode="side" [position]="'end'">
-
-  <table>
-    <tr>
-      <td>NAME</td>
-      <td>PRICE</td>
-      <td>DESCRIPTION</td>
-    </tr>
-
-    <tr *ngFor="let product of cart">
-      <td>{{product.title}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.description}}</td>
-    </tr>
-  </table>
-
-</mat-drawer>
+<mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
+    <p *ngIf="isAdd">Create person</p>
+    <p *ngIf="!isAdd">Edit person</p>
+    <form [formGroup]="personForm" style="display: flex; flex-direction: column; padding: 20px;">
+      <p>Name</p>
+      <input formControlName="name" type="text">
+      <div *ngIf="personForm.get('name').invalid && (personForm.get('name').touched || personForm.get('name').dirty)" class="alert alert-danger">
+        <div *ngIf="personForm.get('name').errors.required">
+          Name is required
+        </div>
+        <div *ngIf="personForm.get('name').errors.minlength">
+          Name must be at least 3 characters
+        </div>
+      </div>
+      <p>Age</p>
+      <input formControlName="age" type="number">
+      <mat-checkbox formControlName="enable">Enable</mat-checkbox>
+      <div *ngIf="personForm.get('enable').invalid && (personForm.get('enable').touched || personForm.get('enable').dirty)" class="alert alert-danger">
+        <div *ngIf="personForm.get('enable').errors.required">
+          Enable is required
+        </div>
+      </div>
+      <p>Image Url</p>
+      <input formControlName="urlImage" type="text">
+    </form>
+    <button *ngIf="isAdd" (click)="create()">Create</button>
+    <button *ngIf="!isAdd" (click)="editDB()">Edit</button>
+  </mat-drawer>
