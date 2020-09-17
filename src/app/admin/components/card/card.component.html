@@ -1,13 +1,12 @@
-<mat-card class="example-card">
+<mat-card class="example-card" [ngStyle]="{'background': enable ? 'orange' : 'red'}">
   <mat-card-header>
-    <mat-card-title>{{name}}</mat-card-title>
+    <mat-card-title>{{name | uppercase}}</mat-card-title>
   </mat-card-header>
   <img mat-card-image [src]="urlImage" alt="Photo">
   <mat-card-content>
-    <p>
-      Age: {{age}}
-      Enable: {{auxEnable}}
-    </p>
+    <p>Age: {{age}}</p>
+    <p>Enable: {{auxEnable}}</p>
+    
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="onComprar(product)">Comprar</button>
