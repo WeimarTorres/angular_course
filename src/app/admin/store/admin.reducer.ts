@@ -1,3 +1,4 @@
+/*
 import { createReducer, Action, on } from "@ngrx/store";
 import { Report } from "./admin.actions";
 
@@ -19,3 +20,4 @@ const featureReducer = createReducer(
 export function reducer(state: AdminState, action: Action): any {
     return featureReducer(state, action);
 }
+*/

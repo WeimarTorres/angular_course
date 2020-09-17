@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PeopleService } from '../shared/services/people.service';
 import { FormComponent } from './components/form/form.component';
-import { Report } from './store/admin.actions';
-import { Store } from '@ngrx/store';
+//import { Report } from './store/admin.actions';
+//import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-admin',
@@ -24,7 +24,8 @@ export class AdminComponent implements OnInit {
   eldery: { name: string; age: number; enable: boolean; urlImage: string; }[];
   young: { name: string; age: number; enable: boolean; urlImage: string; }[];
 
-  constructor(private peopleService: PeopleService, private store: Store<any>) { }
+  //constructor(private peopleService: PeopleService, private store: Store<any>) { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
     this.loadPeople();
@@ -37,11 +38,11 @@ export class AdminComponent implements OnInit {
     this.peopleGetSub = this.peopleService.getPeople().subscribe(
       res => {
         Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
-        
+        /*
         this.data.forEach(el => {
           this.store.dispatch(Report({person: Object.assign({}, el)}));
         } );
-
+        */
         this.eldery = this.data.filter(el => el.age > 64);
 
         this.young = this.data.filter(el => el.age < 65);

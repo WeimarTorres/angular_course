@@ -1,3 +1,4 @@
+/*
 import {
     ActionReducer,
     MetaReducer,
@@ -14,3 +15,4 @@ export function logger(reducer: ActionReducer<any>): any {
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze, logger]
   : [];
+  */
