@@ -84,11 +84,11 @@ export class AdminComponent implements OnInit {
       urlImage: event.urlImage
     });
   }
+*/
 
   delete() {
-    this.loadStudents();
+    this.loadPeople();
   }
-*/
 
   ngOnDestroy() {
     this.peopleGetSub ? this.peopleGetSub.unsubscribe() : '';

@@ -45,9 +45,10 @@ export class CardComponent implements OnInit {
       urlImage: this.imageUrl
     });
   }
+  */
 
   delete() {
-    this.studentsService.deleteStudent(this.id).subscribe(
+    this.peopleService.deletePerson(this.id).subscribe(
       res => {
         this.deleteEvent.emit();
       },
@@ -56,6 +57,5 @@ export class CardComponent implements OnInit {
       }
     );
   }
-  */
 
 }

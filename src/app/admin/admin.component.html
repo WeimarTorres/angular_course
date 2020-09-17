@@ -6,7 +6,7 @@ admin works!
 <div class="row">
   <div *ngFor="let person of eldery" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
 
-    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage"></app-card>
+    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
 
   </div>
 </div>
@@ -15,7 +15,7 @@ admin works!
 <div class="row">
   <div *ngFor="let person of young" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
 
-    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage"></app-card>
+    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
 
   </div>
 </div>
