@@ -7,6 +7,9 @@ import { ProductService } from '../../shared/services/product.service';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { Routes, RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   {
@@ -21,7 +24,10 @@ const routes: Routes = [
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ProductService
