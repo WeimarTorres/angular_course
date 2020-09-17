@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  app: {
+    apiBaseUrl: 'https://electionss-test.firebaseio.com'
+  },
+  auth: {
+    apiBaseUrl: 'https://identitytoolkit.googleapis.com',
+    key: 'AIzaSyB2DtM8UENleqh05l60ElaxFJZPYQAVAmc'
+  }
 };
 
 /*
