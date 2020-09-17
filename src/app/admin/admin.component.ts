@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PeopleService } from '../shared/services/people.service';
+import { FormComponent } from './components/form/form.component';
 
 @Component({
   selector: 'app-admin',
@@ -10,10 +11,12 @@ import { PeopleService } from '../shared/services/people.service';
 })
 export class AdminComponent implements OnInit {
 
+  @ViewChild('appForm') child: FormComponent;
+
   personForm: FormGroup;
 
   peopleGetSub: Subscription;
-  //studentsAddSub: Subscription;
+  peopleAddSub: Subscription;
   //studentsEditSub: Subscription;
 
   idEdit: String;
@@ -54,16 +57,20 @@ export class AdminComponent implements OnInit {
     );
   }
 
-/*
   create() {
-    this.studentsAddSub = this.studentsService.addStudent(this.studentForm.value).subscribe(res => {
-      this.loadStudents();
+    this.peopleAddSub = this.peopleService.addPerson(this.personForm.value).subscribe(res => {
+      this.loadPeople();
     },
     err => {
       console.log('ERROR');
     });
   }
 
+  openDrawer() {
+    this.child.open();
+  }
+
+/*
   editDB() {
     this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.studentForm.value).subscribe(
       res => {
@@ -92,7 +99,7 @@ export class AdminComponent implements OnInit {
 
   ngOnDestroy() {
     this.peopleGetSub ? this.peopleGetSub.unsubscribe() : '';
-    //this.studentsAddSub ? this.studentsAddSub.unsubscribe() : '';
+    this.peopleAddSub ? this.peopleAddSub.unsubscribe() : '';
     //this.studentsEditSub ? this.studentsEditSub.unsubscribe() : '';
   }
 

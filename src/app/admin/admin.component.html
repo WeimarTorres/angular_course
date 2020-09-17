@@ -2,20 +2,34 @@
 admin works!
 </p>
 
-<div style="border: 1px solid black; background: lightBlue">ELDERY</div>
-<div class="row">
-  <div *ngFor="let person of eldery" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
+<mat-drawer-container autosize style="width: 100%; height: 600px;">
 
-    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
+  <app-form #appForm></app-form>
 
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="openDrawer()">
+      Toggle sidenav
+    </button>
   </div>
-</div>
 
-<div style="border: 1px solid black; background: lightBlue">YOUNG</div>
-<div class="row">
-  <div *ngFor="let person of young" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
+  <button mat-button style="background: yellow; margin: 10px" (click)="create()">ADD</button>
 
-    <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
+  <div style="border: 1px solid black; background: lightBlue">ELDERY</div>
+  <div class="row">
+    <div *ngFor="let person of eldery" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
 
+      <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
+
+    </div>
   </div>
-</div>
+
+  <div style="border: 1px solid black; background: lightBlue">YOUNG</div>
+  <div class="row">
+    <div *ngFor="let person of young" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="padding: 50px; display: flex; justify-content: center;">
+
+      <app-card [id]="person.id" [name]="person.name" [age]="person.age" [enable]="person.enable" [urlImage]="person.urlImage" (deleteEvent)="delete($event)"></app-card>
+
+    </div>
+  </div>
+
+</mat-drawer-container>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-form',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
+  @ViewChild('drawer') drawer: MatDrawer;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  open() {
+    this.drawer.toggle();
   }
 
 }
