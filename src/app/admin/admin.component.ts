@@ -15,9 +15,6 @@ export class AdminComponent implements OnInit {
   @ViewChild('appForm') child: FormComponent;
 
   peopleGetSub: Subscription;
-  //studentsEditSub: Subscription;
-
-  idEdit: String;
 
   data = [];
 
@@ -57,40 +54,17 @@ export class AdminComponent implements OnInit {
     this.child.open(type);
   }
 
-/*
-  editDB() {
-    this.studentsEditSub = this.studentsService.updateStudent(this.idEdit, this.studentForm.value).subscribe(
-      res => {
-        this.loadStudents();
-      },
-      err => {
-        console.log('ERROR');
-      }
-    );
+  edit(type: boolean, event) {
+    this.child.edit(event);
+    this.child.open(type);
   }
-
-  edit(event) {
-    this.idEdit = event.id;
-    this.studentForm.patchValue({
-      name: event.name,
-      age: event.age,
-      grade: event.grade,
-      urlImage: event.urlImage
-    });
-  }
-*/
 
   delete() {
     this.loadPeople();
   }
 
-  create() {
-    this.loadPeople();
-  }
-
   ngOnDestroy() {
     this.peopleGetSub ? this.peopleGetSub.unsubscribe() : '';
-    //this.studentsEditSub ? this.studentsEditSub.unsubscribe() : '';
   }
 
 }

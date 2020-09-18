@@ -21,8 +21,6 @@ export class CardComponent implements OnInit {
   @Input() age: number;
   @Input() urlImage: String;
 
-  //@Input() inputSideNav: MatSidenav;
-
   auxEnable: String;
   @Input()
       get enable() {
@@ -32,20 +30,15 @@ export class CardComponent implements OnInit {
         this.auxEnable = enable ? "yes" : "no";
       }
 
-  //colorBackground = (this.age < 65) ? "white" : "red";
-
-/*
   edit() {
-    //this.inputSideNav.toggle();
     this.editEvent.emit({
       id: this.id,
       name: this.name,
       age: this.age,
-      grade: this.grade,
-      urlImage: this.imageUrl
+      enable: this.enable,
+      urlImage: this.urlImage
     });
   }
-  */
 
   delete() {
     this.peopleService.deletePerson(this.id).subscribe(

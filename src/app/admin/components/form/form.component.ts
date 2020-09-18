@@ -13,9 +13,12 @@ export class FormComponent implements OnInit, OnDestroy {
 
   @ViewChild('drawer') drawer: MatDrawer;
   
-  @Output() createEvent = new EventEmitter();
+  @Output() event = new EventEmitter();
+  personEditSub: Subscription;
 
   isAdd: boolean;
+
+  idEdit: String;
 
   personForm: FormGroup;
   peopleAddSub: Subscription;
@@ -39,7 +42,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   create() {
     this.peopleAddSub = this.peopleService.addPerson(this.personForm.value).subscribe(res => {
-      this.createEvent.emit();
+      this.event.emit();
     },
     err => {
       console.log('ERROR');
@@ -48,6 +51,28 @@ export class FormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.peopleAddSub ? this.peopleAddSub.unsubscribe() : '';
+    this.personEditSub ? this.personEditSub.unsubscribe() : '';
+  }
+
+  edit(event) {
+    this.idEdit = event.id;
+    this.personForm.patchValue({
+      name: event.name,
+      age: event.age,
+      grade: event.grade,
+      urlImage: event.urlImage
+    });
+  }
+
+  editDB() {
+    this.personEditSub = this.peopleService.updatePerson(this.idEdit, this.personForm.value).subscribe(
+      res => {
+        this.event.emit();
+      },
+      err => {
+        console.log('ERROR');
+      }
+    );
   }
 
 }
