@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PeopleService } from '../shared/services/people.service';
 import { FormComponent } from './components/form/form.component';
@@ -16,13 +17,23 @@ export class AdminComponent implements OnInit {
 
   peopleGetSub: Subscription;
 
+  searchForm: FormGroup;
+
   data = [];
 
   eldery: { name: string; age: number; enable: boolean; urlImage: string; }[];
   young: { name: string; age: number; enable: boolean; urlImage: string; }[];
 
   //constructor(private peopleService: PeopleService, private store: Store<any>) { }
-  constructor(private peopleService: PeopleService) { }
+  constructor(private peopleService: PeopleService, private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      search: ''
+    });
+  }
+
+  search() {
+    console.log(this.searcForm.value)
+  }
 
   ngOnInit() {
     this.loadPeople();
