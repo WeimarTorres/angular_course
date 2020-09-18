@@ -24,15 +24,21 @@ export class AdminComponent implements OnInit {
   eldery: { name: string; age: number; enable: boolean; urlImage: string; }[];
   young: { name: string; age: number; enable: boolean; urlImage: string; }[];
 
+  auxEldery: { name: string; age: number; enable: boolean; urlImage: string; }[];
+  auxYoung: { name: string; age: number; enable: boolean; urlImage: string; }[];
+
   //constructor(private peopleService: PeopleService, private store: Store<any>) { }
   constructor(private peopleService: PeopleService, private formBuilder: FormBuilder) {
     this.searchForm = this.formBuilder.group({
-      search: ''
+      search: this.searchText
     });
   }
 
+  searchText = '';
+
   search() {
-    console.log(this.searcForm.value)
+    this.searchText = this.searchForm.value.search;
+    this.loadPeople()
   }
 
   ngOnInit() {
@@ -42,7 +48,9 @@ export class AdminComponent implements OnInit {
   loadPeople() {
     this.data = [];
     this.eldery = [];
+    this.auxEldery = [];
     this.young = [];
+    this.auxYoung = [];
     this.peopleGetSub = this.peopleService.getPeople().subscribe(
       res => {
         Object.entries(res).map((p: any) => this.data.push({id: p[0], ...p[1]}));
@@ -51,9 +59,18 @@ export class AdminComponent implements OnInit {
           this.store.dispatch(Report({person: Object.assign({}, el)}));
         } );
         */
-        this.eldery = this.data.filter(el => el.age > 64);
+        this.auxEldery = this.data.filter(el => el.age > 64);
 
-        this.young = this.data.filter(el => el.age < 65);
+        this.auxYoung = this.data.filter(el => el.age < 65);
+
+        if(this.searchText !== '') {
+          console.log(this.searchText)
+          this.eldery = this.auxEldery.filter(el => el.name.includes(this.searchText));
+          this.young = this.auxYoung.filter(el => el.name.includes(this.searchText));
+        } else {
+          this.young = this.auxYoung;
+          this.eldery = this.auxEldery;
+        }
       },
       err => {
         console.log('ERROR');
