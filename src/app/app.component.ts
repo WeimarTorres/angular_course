@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+  import { Component, OnInit, HostListener } from '@angular/core';
+import { from, fromEvent } from "rxjs"
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  title = 'curso-angular';
+export class AppComponent implements OnInit {
+
+  ngOnInit(): void{
+    
+  }
+
 }
